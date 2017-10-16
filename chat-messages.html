@@ -78,6 +78,17 @@ CSS custom property | Description | Default
         margin-right: 5px;
         @apply --chat-message-icon-not-me;
       }
+      .me .author {
+        font-style: italic;
+        color: #777;
+        display: none;
+        @apply --chat-message-author-me;
+      }
+      .not-me .author {
+        font-style: italic;
+        color: #777;
+        @apply --chat-message-author-not-me;
+      }
     </style>
 
     <div id="scroller">
@@ -96,6 +107,9 @@ CSS custom property | Description | Default
             <div
               class="text"
               title="[[_formatTimestamp(msg.created)]]">
+              <div class="author" 
+                title="[[msg.author]]" 
+                hidden$="[[!showAuthorText]]">[[msg.author]]</div>
               <template is="dom-repeat" items="[[_messageLines(msg.text)]]">
                 [[item]]<br/>
               </template>
@@ -186,6 +200,14 @@ CSS custom property | Description | Default
         defaultIcon: {
           type: String,
           value: 'face'
+        },
+
+        /**
+         * Show the author text.
+         */
+        showAuthorText: {
+          type: Boolean,
+          default: false,
         }
       },
 
