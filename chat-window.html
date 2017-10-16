@@ -35,6 +35,7 @@ See `chat-messages` and `chat-input` for additional property mixins.
         author-icon="[[authorIcon]]"
         others-icons="[[othersIcons]]"
         default-icon="[[defaultIcon]]"
+        show-author-text="[[showAuthorText]]"
         messages="[[messages]]"
         date-format="[[dateFormat]]"
         auto-scroll="[[autoScroll]]">
@@ -155,6 +156,14 @@ See `chat-messages` and `chat-input` for additional property mixins.
         defaultIcon: {
           type: String,
           value: 'face'
+        },
+
+        /**
+         * Show the author text.
+         */
+        showAuthorText: {
+          type: Boolean,
+          default: false,
         }
       },
 
