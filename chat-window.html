@@ -31,6 +31,7 @@ See `chat-messages` and `chat-input` for additional property mixins.
     <div class="container">
       <slot name="chat-header"></slot>
       <chat-messages
+        on-tap="onTap"
         author="[[author]]"
         author-icon="[[authorIcon]]"
         others-icons="[[othersIcons]]"
@@ -43,7 +44,7 @@ See `chat-messages` and `chat-input` for additional property mixins.
       <slot name="chat-footer"></slot>
       <slot name="chat-input"></slot>
       <template is="dom-if" if="[[!_hasCustomInput()]]">
-		    <chat-input
+        <chat-input
 		      single-line="[[singleLine]]"
 		      icon="[[sendIcon]]"
 		      text="{{inputText}}"
@@ -176,7 +177,12 @@ See `chat-messages` and `chat-input` for additional property mixins.
           }
 				}
         return false;
-			}
+      },
+      
+      onTap: function(){
+        this.$$('chat-input').focus();
+      }
+
     });
   </script>
 </dom-module>

@@ -112,13 +112,23 @@ CSS custom property | Description | Default
             (this.sendOnEnter || (this.sendOnEnter === undefined && this.singleLine))) {
           this._fireSendEvent();
         }
-      }
+      },
+
+      focus: function(){
+        if(this.singleLine){
+          this.$$('paper-input').focus();
+        }
+        else{
+          this.$$('paper-textarea').focus();
+        }
+      },
 
       /**
        * Triggered when a user taps the send button. The text may be empty.
        * @event send
        * @param {text} string The message to be sent.
        */
+
     });
   </script>
 </dom-module>
